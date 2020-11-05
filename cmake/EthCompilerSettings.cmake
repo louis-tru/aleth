@@ -35,6 +35,9 @@ if (("${CMAKE_CXX_COMPILER_ID}" MATCHES "GNU") OR ("${CMAKE_CXX_COMPILER_ID}" MA
     # Disable warnings about unknown pragmas (which is enabled by -Wall).
     add_compile_options(-Wno-unknown-pragmas)
 
+    # Disable warnings about range loop analysis
+    add_compile_options(-Wno-range-loop-analysis)
+
     # Configuration-specific compiler settings.
     set(CMAKE_CXX_FLAGS_DEBUG          "-O0 -g -DETH_DEBUG")
     set(CMAKE_CXX_FLAGS_MINSIZEREL     "-Os -DNDEBUG")
