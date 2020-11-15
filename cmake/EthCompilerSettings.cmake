@@ -36,13 +36,14 @@ if (("${CMAKE_CXX_COMPILER_ID}" MATCHES "GNU") OR ("${CMAKE_CXX_COMPILER_ID}" MA
     add_compile_options(-Wno-unknown-pragmas)
 
     # Disable warnings about range loop analysis
-    add_compile_options(-Wno-range-loop-analysis)
+    set(CXX_FLAGS -Wno-range-loop-analysis)
+    add_compile_options(${CXX_FLAGS})
 
     # Configuration-specific compiler settings.
-    set(CMAKE_CXX_FLAGS_DEBUG          "-O0 -g -DETH_DEBUG")
-    set(CMAKE_CXX_FLAGS_MINSIZEREL     "-Os -DNDEBUG")
-    set(CMAKE_CXX_FLAGS_RELEASE        "-O3 -DNDEBUG")
-    set(CMAKE_CXX_FLAGS_RELWITHDEBINFO "-O2 -g")
+    set(CMAKE_CXX_FLAGS_DEBUG          "-O0 -g -DETH_DEBUG ${CXX_FLAGS}")
+    set(CMAKE_CXX_FLAGS_MINSIZEREL     "-Os -DNDEBUG ${CXX_FLAGS}")
+    set(CMAKE_CXX_FLAGS_RELEASE        "-O3 -DNDEBUG ${CXX_FLAGS}")
+    set(CMAKE_CXX_FLAGS_RELWITHDEBINFO "-O2 -g ${CXX_FLAGS}")
 
     # Hide all symbols by default.
     add_compile_options(-fvisibility=hidden)
